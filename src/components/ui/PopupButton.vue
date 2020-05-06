@@ -1,0 +1,125 @@
+<template>
+    <a href="#instructions-show" v-on:click="openPopup(popupType)" class="btn btn--white btn--animated">
+        <slot />
+    </a>
+</template>
+
+<script>
+export default {
+    // non-global components should have names
+    name: 'PopupButton',
+    // this prop is used in Vuex function
+    props: ['popupType'],
+
+    methods: {
+        // takes prop as the mutations payload
+        openPopup: function(popupType) {
+            this.$store.commit('changePopup', popupType)
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import '~/assets/sass/main.scss';
+
+.btn {
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: $default-font-size;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-black;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+    
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &,
+    &:link,
+    &:visited {
+        margin: 4rem 2rem;
+        background-color: rgba($color-primary, .7);
+        color: $color-white;
+        font-size: $font-size-large;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+    
+    &:hover {
+        background-color: $color-primary;
+        // color: $color-black;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}
+</style>
