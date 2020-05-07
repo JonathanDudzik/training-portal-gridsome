@@ -8,27 +8,42 @@
                     <span class="heading-primary--sub">Arabian Nights Theme</span>
                 </h1>
 
-                <PopupButton popup-type="instructions-video">
+                <PopupButton popup-type="instructions-popup">
                     instructions
+                </PopupButton>
+                <PopupButton popup-type="feedback-popup">
+                    feedback
                 </PopupButton>
 
             </div>
         </div>
-        <VideoInstructions />
+        <PopupFull popup-type="instructions-popup">
+            <div class="popup__content">
+                <video class="popup__video" src="@/assets/video/popup-instructions.mp4" controls>
+                    Unfortunately, the browser you are using does not support video playback
+                </video>
+            </div>
+        </PopupFull>
+        <PopupFull popup-type="feedback-popup">
+            <div class="popup__feedback popup__content">
+                <a href="#panelPopups" class="popup__close"></a>
+                <div class="popup__feedback-answer heading-tertiary"></div>
+                <div class="popup__feedback-explanation heading-tertiary"></div>
+                <div class="popup__feedback-total heading-tertiary"></div>
+            </div>
+        </PopupFull>
     </Layout>
 </template>
 
 <script>
 import PopupButton from '~/components/ui/PopupButton.vue'
-import VideoInstructions from '~/components/popups/VideoInstructions.vue'
-import FeedbackInteraction from '~/components/popups/FeedbackInteraction.vue'
+import PopupFull from '~/components/layout/PopupFull.vue'
 
 export default {
     name: 'Hero',
     components: {
         PopupButton,
-        VideoInstructions,
-        FeedbackInteraction
+        PopupFull
     }
 }
 </script>

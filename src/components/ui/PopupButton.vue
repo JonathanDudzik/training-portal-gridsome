@@ -1,5 +1,5 @@
 <template>
-    <a href="#instructions-show" v-on:click="openPopup(popupType)" class="btn btn--white btn--animated">
+    <a href="#" v-on:click="openPopup(popupType)" class="btn btn--white btn--animated">
         <slot />
     </a>
 </template>

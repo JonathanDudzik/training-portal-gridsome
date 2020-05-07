@@ -1,19 +1,19 @@
 <template>
-    <div v-if="currentPopup == 'instructions-video'" v-on:click="closePopup()" class="popup">
-        <button class="popup__close">X</button>
-        <div class="popup__content">
-            <video class="popup__video" src="@/assets/video/popup-instructions.mp4" controls>
-                Unfortunately, the browser you are using does not support video playback
-            </video>
-        </div>
+    <div v-if="currentPopup == popupType" v-on:click="closePopup()" class="popup">
+        <button class="popup__close">
+            <img src="@/assets/images/popup-close.svg" alt="popup close button" tabindex="0">
+        </button>
+        <slot />
     </div>
 </template>
 
 <script>
 export default {
-    name: 'VideoInstructions',
+    name: 'PopupFull',
+    props: ['popupType'],
     computed: {
         currentPopup() {
+            // console.log(popupType)
             return this.$store.state.currentPopup
         }
     },
@@ -81,20 +81,20 @@ export default {
 
     //THE X CLOSE BUTTON
     &__close {
-        &:link,
-        &:visited {
-            color: $color-grey-dark;
-            position: absolute;
-            top: 2.5rem;
-            right: 2.5rem;
-            font-size: 3rem;
-            text-decoration: none;
-            display: inline-block;
-            line-height: 1;
-        }
-
+        background-color: $color-grey-dark;
+        position: absolute;
+        top: 6rem;
+        right: 6rem;
+        height: 7rem;
+        width: 7rem;
+        display: inline-block;
+        border-radius: 50%;
+        border: 0px;
+        padding: 1rem;
+        
         &:hover {
-            color: $color-primary;
+            background-color: $color-primary;
+
         }
     }
 }
