@@ -1,5 +1,5 @@
 <template>
-    <Layout>
+    <div>
         <div class="header">
             <div class="header__text-box">
 
@@ -11,10 +11,7 @@
                 <PopupButton popup-type="instructions-popup">
                     instructions
                 </PopupButton>
-                <PopupButton popup-type="feedback-popup">
-                    feedback
-                </PopupButton>
-
+            
             </div>
         </div>
         <PopupFull popup-type="instructions-popup">
@@ -24,15 +21,7 @@
                 </video>
             </div>
         </PopupFull>
-        <PopupFull popup-type="feedback-popup">
-            <div class="popup__feedback popup__content">
-                <a href="#panelPopups" class="popup__close"></a>
-                <div class="popup__feedback-answer heading-tertiary"></div>
-                <div class="popup__feedback-explanation heading-tertiary"></div>
-                <div class="popup__feedback-total heading-tertiary"></div>
-            </div>
-        </PopupFull>
-    </Layout>
+    </div>
 </template>
 
 <script>

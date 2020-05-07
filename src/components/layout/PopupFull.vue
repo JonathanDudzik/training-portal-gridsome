@@ -1,10 +1,17 @@
 <template>
-    <div v-if="currentPopup == popupType" v-on:click="closePopup()" class="popup">
-        <button class="popup__close">
-            <img src="@/assets/images/popup-close.svg" alt="popup close button" tabindex="0">
-        </button>
-        <slot />
-    </div>
+    <transition
+        appear 
+        mode="in-out"
+        v-bind:css="false"
+        v-on:enter="firstEnter"
+        v-on:leave="firstLeave">
+        <div v-if="currentPopup == popupType" v-on:click="closePopup()" class="popup">
+            <button class="popup__close">
+                <img src="@/assets/images/popup-close.svg" alt="popup close button" tabindex="0">
+            </button>
+            <slot></slot>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -21,12 +28,24 @@ export default {
         // takes prop as the mutations payload
         closePopup: function() {
             this.$store.commit('changePopup', '')
+        },
+
+        firstEnter: function(el, done) {
+            console.log('ENTER')
+            // gsap.fromTo (el, 0.5, {opacity: 0}, {opacity: 1})
+            done()
+        },
+
+        firstLeave: function(el, done) {
+            console.log('LEAVE')
+            // gsap.to (el, 0.5, {opacity: 0})
+            done()
         }
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss"> // scoped CSS: element in slot within transition element doesn't apply child scope
 @import '~/assets/sass/main.scss';
 
 .popup {
