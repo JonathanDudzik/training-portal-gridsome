@@ -1,14 +1,5 @@
 <template>
     <Layout>
-        <section class="media-slider">
-            <div id="introduction" class="heading-switch u-text-center u-margin-bottom-big">
-                <h2 class="heading-secondary heading-switch__first-text">
-                    Once Upon a Time...
-                </h2>
-                <h2 class="heading-secondary heading-switch__second-text">
-                    There was an Introduction.
-                </h2>
-            </div>
             <div class="media-slider-box">
                 <div data-key="box-key-text" class="media-slider-box__text">
                     <figure class="media-slider-box__shape">
@@ -69,13 +60,17 @@
                     <figcaption class="icon-container__caption">SOURCE</figcaption>
                 </figure>
             </div>
-        </section>
     </Layout>
 </template>
 
 <script>
+import HeadingReveal from '~/components/ui/HeadingReveal.vue'
+
 export default {
     name: 'Introduction',
+    components: {
+        HeadingReveal
+    }
 }
 </script>
 

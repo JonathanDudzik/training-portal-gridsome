@@ -18,7 +18,7 @@ export default {
   },
   name: 'DefaultLayout',
   components: {
-    NavMenu,
+    NavMenu
   }
 }
 

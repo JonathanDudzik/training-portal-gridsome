@@ -7,5 +7,9 @@
 module.exports = {
   siteName: 'Demo',
   siteDescription:'Demo site of the training portal',
-  plugins: []
+  plugins: [
+    {
+      use: "gridsome-plugin-tailwindcss"
+    }
+  ]
 }

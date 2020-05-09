@@ -1,14 +1,7 @@
 <template>
-    <Layout>
-        <transition
-            appear 
-            mode="in-out"
-            v-bind:css="false"
-            v-on:enter="firstEnter"
-            v-on:leave="firstLeave">
-            <router-view />
-        </transition>
-    </Layout>
+  <Layout>
+    <router-view />
+  </Layout>
 </template>
 
 <static-query>
@@ -33,24 +26,6 @@ export default {
         }
       ]
     }
-  },
-  methods: {
-        // takes prop as the mutations payload
-        closePopup: function() {
-            this.$store.commit('changePopup', '')
-        },
-
-        firstEnter: function(el, done) {
-            console.log('ENTER')
-            // gsap.fromTo (el, 0.5, {opacity: 0}, {opacity: 1})
-            done()
-        },
-
-        firstLeave: function(el, done) {
-            console.log('LEAVE')
-            // gsap.to (el, 0.5, {opacity: 0})
-            done()
-        }
-    }
+  }
 }
 </script>

@@ -6,6 +6,7 @@ import DefaultLayout from '~/layouts/DefaultLayout.vue'
 import { store } from '~/store/store'
 
 export default function (Vue, { router, head, isClient, appOptions }) {
+
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
 

@@ -15,12 +15,18 @@
 </template>
 
 <script>
+import { TimelineMax, CSSPlugin, ScrollToPlugin, Draggable } from "gsap/all"
+
 export default {
     name: 'PopupFull',
     props: ['popupType'],
+    data: function () {
+        return {
+        tl: null
+        }
+    },
     computed: {
         currentPopup() {
-            // console.log(popupType)
             return this.$store.state.currentPopup
         }
     },
@@ -31,16 +37,15 @@ export default {
         },
 
         firstEnter: function(el, done) {
-            console.log('ENTER')
-            // gsap.fromTo (el, 0.5, {opacity: 0}, {opacity: 1})
-            done()
+            this.tl.fromTo(el, 0.3, {scale: 0, opacity: 0}, {scale: 1, opacity: 1, onComplete: function(){done()}})
         },
 
         firstLeave: function(el, done) {
-            console.log('LEAVE')
-            // gsap.to (el, 0.5, {opacity: 0})
-            done()
+            this.tl.to(el, 0.3, {opacity: 0, scale: 0, onComplete: function(){done()}})
         }
+    },
+    mounted() {
+        this.tl = new TimelineMax()
     }
 }
 </script>
